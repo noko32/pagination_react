@@ -6,7 +6,7 @@ const Posts = ({ posts, loading }) => {
         return <h2>Loading...</h2>
     }
     return (
-        <ListGroup className='mb-4'>
+        <ListGroup className='mb-4 mt-3'>
             {posts.map(post => (
                 <ListGroup.Item key={post.id}>
                     {post.title}

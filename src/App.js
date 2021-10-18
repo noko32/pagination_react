@@ -8,7 +8,7 @@ const App = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostPerPage] = useState(10);
+  const [postsPerPage] = useState(10);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -27,11 +27,14 @@ const App = () => {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
+  // change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <div className="container mt-5">
-      <h1 className="text-light mb-3">My blog</h1>
+      <h1 className="text-success mb-3">My blog</h1>
       <Posts posts={currentPosts} loading={loading} />
-      <Paginations postsPerPage={postsPerPage} totalPosts={posts.length} />
+      <Paginations postsPerPage={postsPerPage} totalPosts={posts.length} paginate={paginate} />
     </div>
   );
 };
